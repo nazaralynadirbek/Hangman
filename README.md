@@ -1,2 +1,16 @@
-# hangman
-Simple Hangman game based on Python and WordsAPI
+# Hangman
+Hangman game based on Python and WordsAPI
+
+## Installation
+
+```
+pip install -r requirements.txt
+```
+
+```
+python run.py
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
