@@ -2,8 +2,8 @@
 
 import unirest
 
-URL = ''
-KEY = ''
+URL = 'https://wordsapiv1.p.mashape.com/words/'
+KEY = 'WRuC7cfE9PmshM86JyjTIorUWozqp1UQn6Mjsni25AVVaLP08l'
 
 class Adapter:
     """
@@ -27,9 +27,9 @@ class Adapter:
         :return: dictionary
         """
 
-        respone = unirest.get(URL, headers={
+        response = unirest.get(URL, headers={
                                        'X-Mashape-Key': KEY,
                                        'Accept': 'application/json'
                                    }, params=params)
 
-        return respone.body
+        return response

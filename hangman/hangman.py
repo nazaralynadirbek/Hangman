@@ -31,7 +31,10 @@ class Hangman:
         self.dictionary = Adapter({'lang': 'en'})
 
         # Get word
-        self.usr_goal = list(self.dictionary.request(params={'random': 'true'})['word'].lower())
+        response = self.dictionary.request(params={'random': 'true', 'hasDetails': 'hasCategories'})
+
+        self.usr_goal = list(response.body['word'].lower())
+        self.usr_goal_definition = response.body['results'][0]['definition']
 
     def _board(self):
         """
@@ -56,6 +59,9 @@ class Hangman:
         for letter in self.usr_incorrect:
             print letter,
         print '\n'
+
+        if len(self.usr_incorrect) >= 3:
+            print 'Tips: {} \n'.format(self.usr_goal_definition)
 
     def _usr_guess(self):
         """
@@ -113,3 +119,6 @@ class Hangman:
             if self._lose():
                 print 'GAME OVER'
                 break
+
+        if self._done():
+            print 'Goal word was: {0}'.format(''.join(self.usr_goal))
